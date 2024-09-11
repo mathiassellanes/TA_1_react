@@ -6,11 +6,21 @@
   padding: 20px;
   text-align: center;
   color: black;
+  width: 300px;
+}
+
+.ghost {
+  opacity: 0.5;
+}
+
+.card__title, .card__description {
+  word-break: break-all;
 }
 
 .card__dates {
   display: flex;
   font-size: 12px;
+  justify-content: space-evenly;
   gap: 20px;
 }
 

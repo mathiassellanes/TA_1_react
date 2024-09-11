@@ -4,11 +4,11 @@ import { cardsType } from "../constants";
 
 import "./index.css";
 
-const Card: FC<cardsType> = ({ title, description, personAssigned, startDate, endDate }) => {
+const Card: FC<cardsType & { ghost?: boolean }> = ({ title, description, personAssigned, startDate, endDate, ghost }) => {
   return (
-    <div className="card">
-      <h2>{title}</h2>
-      <p>{description}</p>
+    <div className={`card ${ghost ? 'ghost': ''}`}>
+      <h2 className="card__title">{title}</h2>
+      <p className="card__description">{description}</p>
       <p>{personAssigned}</p>
       <div className="card__dates">
         <div className="card__dates--container">
