@@ -51,3 +51,13 @@
   display: flex;
   gap: 1em;
 }
+
+.app__buttons {
+  display: flex;
+  gap: 1em;
+}
+
+.app__counter {
+  font-size: 2em;
+  margin: 1em 0;
+}
