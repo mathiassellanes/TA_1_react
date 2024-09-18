@@ -1,5 +1,5 @@
 export type cardsType = {
-  id: number;
+  id: string;
   title: string;
   description: string;
   personAssigned: string;
@@ -9,7 +9,7 @@ export type cardsType = {
 
 export const cards = [
   {
-    id: 1,
+    id: '1',
     title: "Card 1",
     description: "Description 1",
     personAssigned: "Person 1",
@@ -17,7 +17,7 @@ export const cards = [
     endDate: "2021-01-02",
   },
   {
-    id: 2,
+    id: '2',
     title: "Card 2",
     description: "Description 2",
     personAssigned: "Person 2",
@@ -25,7 +25,7 @@ export const cards = [
     endDate: "2021-01-02",
   },
   {
-    id: 3,
+    id: '3',
     title: "Card 3",
     description: "Description 3",
     personAssigned: "Person 3",

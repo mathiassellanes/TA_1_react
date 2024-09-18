@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { v4 as uuidv4 } from 'uuid';
+
 import Card from './components/Card'
 import { cards, cardsType } from './constants'
 
@@ -17,7 +19,7 @@ function App() {
 
     if (event.target.value) {
       setGhostCard({
-        id: toRenderCards.length + 1,
+        id: uuidv4(),
         title: event.target.value,
         description: `Descripción para ${event.target.value}`,
         personAssigned: "Vos",
@@ -27,6 +29,10 @@ function App() {
     } else {
       setGhostCard(null)
     }
+  }
+
+  const handleDelete = (id: string) => {
+    setToRenderCards(toRenderCards.filter(card => card.id !== id))
   }
 
   const handleSubmit = () => {
@@ -66,7 +72,7 @@ function App() {
         }
         {
           toRenderCards.map((card) => (
-            <Card key={card.id} {...card} />
+            <Card handleDelete={handleDelete} key={card.id} {...card} />
           ))
         }
       </div>
