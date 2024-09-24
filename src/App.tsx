@@ -3,21 +3,23 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [timerValue, setTimerValue] = useState<number>(0)
 
   useEffect(() => {
-    document.title = `Contador: ${count}`
-  }, [count])
+    const interval = setInterval(() => {
+      setTimerValue(timerValue + 1)
+    }, 1000)
+
+    return () => {
+      clearInterval(interval)
+    }
+  })
 
   return (
     <div className='app'>
       <span className='app__counter'>
-        Contador: {count}
+        Contador: {timerValue}
       </span>
-      <div className='app__buttons'>
-        <button onClick={() => setCount(count + 1)}>Incrementar</button>
-        <button onClick={() => setCount(count - 1)}>Decrementar</button>
-      </div>
     </div>
   )
 }
