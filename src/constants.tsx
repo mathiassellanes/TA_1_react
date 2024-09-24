@@ -5,6 +5,7 @@ export type cardsType = {
   personAssigned: string;
   startDate: string;
   endDate: string;
+  editable?: boolean;
 }
 
 export const cards = [

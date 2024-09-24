@@ -1,12 +1,13 @@
 import { FC } from "react";
 
-import { cardsType } from "../constants";
+import { cardsType } from "../../constants";
 
-import trashIcon from "../assets/trash.svg"
+import trashIcon from "../../assets/trash.svg"
+import editIcon from "../../assets/edit.svg"
 
 import "./index.scss";
 
-const Card: FC<cardsType & { ghost?: boolean, handleDelete?: (id: string) => void }> = ({
+const Card: FC<cardsType & { ghost?: boolean, handleDelete?: (id: string) => void, handleEdit?: (id: string) => void}> = ({
   id,
   title,
   description,
@@ -14,7 +15,8 @@ const Card: FC<cardsType & { ghost?: boolean, handleDelete?: (id: string) => voi
   startDate,
   endDate,
   ghost,
-  handleDelete
+  handleDelete,
+  handleEdit,
 }) => {
   return (
     <div className={`card ${ghost ? 'ghost' : ''}`}>
@@ -35,6 +37,14 @@ const Card: FC<cardsType & { ghost?: boolean, handleDelete?: (id: string) => voi
         !ghost && (
           <button onClick={() => handleDelete?.(id)} className="card__delete">
             <img src={trashIcon} className="card__delete--icon" alt="Eliminar" />
+          </button>
+        )
+      }
+
+      {
+        !ghost && (
+          <button onClick={() => handleEdit?.(id)} className="card__edit">
+            <img src={editIcon} className="card__edit--icon" alt="Editar" />
           </button>
         )
       }

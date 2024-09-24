@@ -1,0 +1,50 @@
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  color: black;
+  width: 300px;
+  position: relative;
+
+  &__dates {
+    display: flex;
+    font-size: 12px;
+    justify-content: space-evenly;
+    gap: 20px;
+
+    &--container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  &__delete, &__edit {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &--icon {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  &__edit {
+    left: inherit;
+    right: 0;
+  }
+
+  &__title, &__description {
+    word-break: break-all;
+  }
+}
+
+.ghost {
+
+}

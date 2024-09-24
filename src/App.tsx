@@ -2,14 +2,15 @@ import { useState } from 'react'
 
 import { v4 as uuidv4 } from 'uuid';
 
-import Card from './components/Card'
+import Card from './components/Card/Card'
 import { cards, cardsType } from './constants'
 
 import './App.css'
+import CardEdit from './components/CardEdit';
 
 function App() {
   const [inputValue, setInputValue] = useState<string>("")
-  const [toRenderCards, setToRenderCards] = useState(cards)
+  const [toRenderCards, setToRenderCards] = useState<cardsType[]>(cards)
   const [ghostCard, setGhostCard] = useState<cardsType | null>(null)
 
   const today = new Date().toISOString().split('T')[0]
@@ -21,8 +22,8 @@ function App() {
       setGhostCard({
         id: uuidv4(),
         title: event.target.value,
-        description: `Descripción para ${event.target.value}`,
-        personAssigned: "Vos",
+        description: '',
+        personAssigned: '',
         startDate: today,
         endDate: today,
       })
@@ -35,11 +36,39 @@ function App() {
     setToRenderCards(toRenderCards.filter(card => card.id !== id))
   }
 
-  const handleSubmit = () => {
+  const handleToggleEdit = (id: string) => {
+    const card = toRenderCards.find(card => card.id === id)
+
+    if (!card) return
+
+    setToRenderCards(toRenderCards.map(card => {
+      if (card.id === id) {
+        return {
+          ...card,
+          editable: true,
+        }
+      }
+
+      return card
+    })
+    )
+  }
+
+  const handleEdit = (card: cardsType) => {
+    setToRenderCards(toRenderCards.map(c => {
+      if (c.id === card.id) {
+        return card
+      }
+
+      return c
+    }))
+  }
+
+  const handleSubmit = (card: cardsType) => {
     if (!inputValue) return
 
     setToRenderCards([
-      ghostCard!,
+      card!,
       ...toRenderCards,
     ])
     setGhostCard(null)
@@ -49,30 +78,37 @@ function App() {
   return (
     <div className='app'>
       <div className='app__input'>
+        Escribe para agregar
         <input
           type="text"
           value={inputValue}
           onChange={handleInputChange}
         />
-        <button
-          onClick={handleSubmit}
-        >
-          Añadir Tarjeta
-        </button>
       </div>
       <div>
         {
           ghostCard && (
-            <Card
-              key={ghostCard.id}
-              ghost
+            <CardEdit
               {...ghostCard}
+              ghost
+              handleDelete={() => setGhostCard(null)}
+              handleSubmit={handleSubmit}
             />
           )
         }
         {
           toRenderCards.map((card) => (
-            <Card handleDelete={handleDelete} key={card.id} {...card} />
+            card.editable
+              ? <CardEdit
+                {...card}
+                handleDelete={() => setGhostCard(null)}
+                handleSubmit={handleEdit}
+              />
+              : <Card
+                handleDelete={handleDelete}
+                key={card.id} {...card}
+                handleEdit={handleToggleEdit}
+              />
           ))
         }
       </div>
