@@ -61,3 +61,12 @@
   font-size: 2em;
   margin: 1em 0;
 }
+
+.user-card {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+}

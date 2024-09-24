@@ -1,26 +1,33 @@
-import { useEffect, useState } from 'react'
+import { createContext, useState } from 'react'
 
 import './App.css'
+import UserInfo from './components/userInfo'
+import UserChangeName from './components/userChangeName'
+
+
+const defaultContext = {
+  user: {
+    name: 'John Doe',
+    age: 25
+  },
+}
+
+export const AppContext = createContext<{
+  user: {
+    name: string
+    age: number
+  }
+  setUser?: (user: { name: string, age: number }) => void
+}>(defaultContext)
 
 function App() {
-  const [timerValue, setTimerValue] = useState<number>(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimerValue(timerValue + 1)
-    }, 1000)
-
-    return () => {
-      clearInterval(interval)
-    }
-  })
+  const [user, setUser] = useState(defaultContext.user)
 
   return (
-    <div className='app'>
-      <span className='app__counter'>
-        Contador: {timerValue}
-      </span>
-    </div>
+    <AppContext.Provider value={{ user, setUser }}>
+      <UserChangeName />
+      <UserInfo />
+    </AppContext.Provider>
   )
 }
 
