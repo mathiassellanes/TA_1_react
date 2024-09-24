@@ -3,21 +3,29 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [responseData, setResponseData] = useState([])
 
   useEffect(() => {
-    document.title = `Contador: ${count}`
-  }, [count])
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => setResponseData(data))
+  }, [])
 
   return (
     <div className='app'>
-      <span className='app__counter'>
-        Contador: {count}
-      </span>
-      <div className='app__buttons'>
-        <button onClick={() => setCount(count + 1)}>Incrementar</button>
-        <button onClick={() => setCount(count - 1)}>Decrementar</button>
-      </div>
+      <h1>Usuarios</h1>
+      <ul>
+        {responseData?.map((user: {
+          id: number
+          name: string
+          email: string
+        }) => (
+          <li key={user.id}>
+            <h3>{user.name}</h3>
+            <p>{user.email}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
