@@ -67,6 +67,25 @@
   gap: 1em;
   align-items: center;
   padding: 1em;
-  border: 1px solid #ccc;
+  border: 1px solid #343434;
+  color: #333;
   border-radius: 0.5em;
+}
+
+.user-card-dark {
+  background-color: #333;
+  color: #fff;
+}
+
+.change-theme {
+  border: 1px solid #000000;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  background-color: #000000;
+  color: #fff;
+  cursor: pointer;
+
+  transition: background-color 300ms;
+
+  margin-bottom: 20px;
 }

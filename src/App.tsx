@@ -1,33 +1,36 @@
 import { createContext, useState } from 'react'
 
-import './App.css'
 import UserInfo from './components/userInfo'
-import UserChangeName from './components/userChangeName'
 
+import './App.css'
+import ChangeUserTheme from './components/changeUserTheme'
 
-const defaultContext = {
-  user: {
-    name: 'John Doe',
-    age: 25
-  },
+const defaultThemeContext = {
+  theme: 'light',
+  isLight: true,
+  setTheme: () => {},
+  toggleTheme: () => {}
 }
 
-export const AppContext = createContext<{
-  user: {
-    name: string
-    age: number
-  }
-  setUser?: (user: { name: string, age: number }) => void
-}>(defaultContext)
+export const ThemeContext = createContext<{
+  theme: string,
+  isLight: boolean,
+  setTheme: (theme: string) => void
+  toggleTheme: () => void
+}>(defaultThemeContext)
 
 function App() {
-  const [user, setUser] = useState(defaultContext.user)
+  const [theme, setTheme] = useState('light')
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }
 
   return (
-    <AppContext.Provider value={{ user, setUser }}>
-      <UserChangeName />
+    <ThemeContext.Provider value={{toggleTheme, theme, setTheme, isLight: theme === 'light' }}>
+      <ChangeUserTheme />
       <UserInfo />
-    </AppContext.Provider>
+    </ThemeContext.Provider>
   )
 }
 

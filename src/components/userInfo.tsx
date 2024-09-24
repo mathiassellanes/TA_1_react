@@ -1,16 +1,12 @@
 import { useContext } from "react"
-import { AppContext } from "../App"
+import { ThemeContext } from "../App"
 
 const UserInfo = () => {
-  const {
-    user: { name, age }
-  } = useContext(AppContext)
-
+  const { isLight } = useContext(ThemeContext)
 
   return (
-    <div className="user-card">
-      <p>{name}</p>
-      <p>{age}</p>
+    <div className={`user-card ${isLight ? 'user-card-dark' : ''}`}>
+      Mathias Sellanes
     </div>
   )
 }
