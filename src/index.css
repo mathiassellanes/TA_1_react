@@ -83,3 +83,8 @@ button:focus-visible {
   gap: 30px;
   list-style-type: none;
 }
+
+.navigation {
+  display: flex;
+  gap: 50px;
+}
