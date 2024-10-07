@@ -1,50 +1,20 @@
-# React + TypeScript + Vite
+Cada branch corresponde a cada TA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+[Parte 1](https://github.com/mathiassellanes/TA_1_react/tree/parte_1)
+[Parte 2](https://github.com/mathiassellanes/TA_1_react/tree/parte_2)
+[Parte 3](https://github.com/mathiassellanes/TA_1_react/tree/parte_3)
+[Parte 4](https://github.com/mathiassellanes/TA_1_react/tree/parte_4)
+[Parte 5](https://github.com/mathiassellanes/TA_1_react/tree/parte_5)
+[Parte 6](https://github.com/mathiassellanes/TA_1_react/tree/parte_6)
+[Parte 7](https://github.com/mathiassellanes/TA_1_react/tree/parte_7)
+[Parte 8](https://github.com/mathiassellanes/TA_1_react/tree/parte_8)
+[Parte 9](https://github.com/mathiassellanes/TA_1_react/tree/parte_9)
+[Parte 10](https://github.com/mathiassellanes/TA_1_react/tree/parte_10)
+[Parte 11](https://github.com/mathiassellanes/TA_1_react/tree/parte_11)
+[Parte 12](https://github.com/mathiassellanes/TA_1_react/tree/parte_12)
+[Parte 13](https://github.com/mathiassellanes/TA_1_react/tree/parte_13)
+[Parte 14](https://github.com/mathiassellanes/TA_1_react/tree/parte_14)
+[Parte 15](https://github.com/mathiassellanes/TA_1_react/tree/parte_15)
+[Parte 16](https://github.com/mathiassellanes/TA_1_react/tree/parte_16)
+[Parte 17](https://github.com/mathiassellanes/TA_1_react/tree/parte_17)
+[Parte 18](https://github.com/mathiassellanes/TA_1_react/tree/parte_18)
